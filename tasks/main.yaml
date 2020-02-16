@@ -1,8 +1,18 @@
 ---
-- name: "Ensure iptables tooling does not use the nftables backend"
+- name: "Fail if OS/Architecture is not supported"
+  fail:
+    msg: "Installing iptables-legacy on {{ (ansible_os_family | lower) + '_' + (ansible_architecture | lower) }} is unsupported."
+  when:
+    - "(configure_iptables_legacy_alternatives | default({}))[(ansible_os_family | lower) + '_' + (ansible_architecture | lower)] is not defined"
+    - "iptables_legacy is defined"
+  tags:
+    - "iptables-legacy"
+- name: "Configure iptables-legacy"
   alternatives:
     name: "{{ item.name }}"
     path: "{{ item.path }}"
-  with_items: "{{ configure_iptables_legacy_alternatives }}"
+  with_items: "{{ configure_iptables_legacy_alternatives[(ansible_os_family | lower) + '_' + (ansible_architecture | lower)] }}"
+  when:
+    - "iptables_legacy is defined"
   tags:
     - "iptables-legacy"
