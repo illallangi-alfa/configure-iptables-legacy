@@ -19,7 +19,7 @@ configure_iptables_legacy_alternatives:
       path: "/usr/sbin/arptables-legacy"
     - name: "ebtables"
       path: "/usr/sbin/ebtables-legacy"
-redhat_x86_64:
+  redhat_x86_64:
     - name: "iptables"
       path: "/usr/sbin/iptables-legacy"
 #    - name: "ip6tables"
