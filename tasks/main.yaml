@@ -1,7 +1,7 @@
 ---
 - name: "Fail if OS/Architecture is not supported"
   fail:
-    msg: "Installing iptables-legacy on {{ (ansible_os_family | lower) + '_' + (ansible_architecture | lower) }} is unsupported."
+    msg: "Configuring iptables-legacy on {{ (ansible_os_family | lower) + '_' + (ansible_architecture | lower) }} is unsupported."
   when:
     - "(configure_iptables_legacy_alternatives | default({}))[(ansible_os_family | lower) + '_' + (ansible_architecture | lower)] is not defined"
     - "iptables_legacy is defined"
