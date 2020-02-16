@@ -1,5 +1,4 @@
 ---
-iptables_legacy: true
 configure_iptables_legacy_alternatives:
   debian_armv6l:
     - name: "iptables"
