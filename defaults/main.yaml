@@ -1,6 +1,6 @@
 ---
 iptables_legacy: true
-configure-iptables-legacy-alternatives:
+configure_iptables_legacy_alternatives:
   - name: "iptables"
     path: "/usr/sbin/iptables-legacy"
   - name: "ip6tables"
